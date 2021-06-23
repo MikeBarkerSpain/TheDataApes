@@ -2,6 +2,8 @@ import streamlit as st
 from PIL import Image
 import os, sys
 import json
+import pandas as pd 
+import requests as rq
 
 #Siempre que veas 'pass' es un TO-DO (por hacer)
 
@@ -38,9 +40,8 @@ if menu == "Map":
     draw_map(df_map)
 
 if menu == "API":
-    """5"""
-    # Accede al único endpoint de tu API flask y lo muestra por pantalla como tabla/dataframe
-    pass
+    datos_json = rq.get('http://localhost:6060/info').json()
+    st.dataframe(pd.DataFrame(datos_json))
 
 if menu == "Australia Fire":
     """6"""

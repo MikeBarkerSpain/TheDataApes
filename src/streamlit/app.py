@@ -1,42 +1,39 @@
 import streamlit as st
 from PIL import Image
 import os, sys
+import json
 
-""" Siempre que veas 'pass' es un TO-DO (por hacer)"""
+#Siempre que veas 'pass' es un TO-DO (por hacer)
 
-"""1"""
-# Haz que se pueda importar correctamente estas funciones que están en la carpeta utils/
-path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # se localiza 
+# se localiza del fichero y se hacen saltos hasta la raiz del proyecto
+path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 sys.path.append(path)
-print(os.path.abspath(__file__))
-print (path)
 
+# se importan las funciones desde la raiz del proyecto
 from src.utils.stream_config import draw_map
 from src.utils.dataframes import load_csv_for_map
 
 
-print('OK')
-'''
 menu = st.sidebar.selectbox('Menu:',
             options=["No selected", "Load Image", "Map", "API", "MySQL", "Machine Learning"])
 
 if menu == "No selected": 
-    """2"""
-    # Pon el título del proyecto que está en el archivo "config.json" en /config
-    st.title(pass)
-    # Pon la descripción del proyecto que está en el archivo "config.json" en /config
-    st.write(pass)
+    # se genera la instrucción de apertura del fichero de configuración para cargar los datos en una variable
+    with open(path + os.sep + 'config' + os.sep + 'config.json', 'r') as outfile:
+        json_readed = json.load(outfile)
+
+    # se cargan los datos de la variable en los datos que saldrán por pantalla
+    st.title(json_readed['Title'])
+    st.write(json_readed['Description'])
     
-if menu == "Load Image": 
-    """3"""
-    # Carga la imagen que está en data/img/happy.jpg
-    image = Image.open(pass)  
+if menu == "Load Image":
+    # Se carga la imagen que está en data/img/happy.jpg
+    image = Image.open(path + os.sep + 'data' + os.sep + 'img' + os.sep + 'happy.jpg', 'r')  
     st.image (image,use_column_width=True)
 
 if menu == "Map":
-    """4"""
     # El archivo que está en data/ con nombre 'red_recarga_acceso_publico_2021.csv'
-    csv_map_path = pass
+    csv_map_path = path + os.sep + 'data' + os.sep + 'red_recarga_acceso_publico_2021.csv'
     df_map = load_csv_for_map(csv_map_path)
     draw_map(df_map)
 
@@ -57,5 +54,4 @@ if menu == "Australia Fire":
     # 7. Muestra por pantalla en Streamlit la tabla completa (X e y)
     pass
 
-'''
 

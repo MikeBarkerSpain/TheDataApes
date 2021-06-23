@@ -14,6 +14,7 @@ sys.path.append(path)
 # se importan las funciones desde la raiz del proyecto
 from src.utils.stream_config import draw_map
 from src.utils.dataframes import load_csv_for_map
+from src.utils import sql_functions
 
 
 menu = st.sidebar.selectbox('Menu:',
@@ -46,12 +47,21 @@ if menu == "API":
 if menu == "Australia Fire":
     """6"""
 
-    # 1. Conecta a la BBDD
-    # 2. Obtén, a partir de sentencias SQL (no pandas), la información de las tablas que empiezan por 'fire_archive*' (join)
-    # 3. Entrena tres modelos de ML diferentes siendo el target la columna 'fire_type'. Utiliza un pipeline que preprocese los datos con PCA. Usa Gridsearch.  
+    # 1. Conecta a la BBDD OK
+    # 2. Obtén, a partir de sentencias SQL (no pandas), la información de las tablas que empiezan por 'fire_archive*' (join) OK
+
+    # 3. Entrena tres modelos de ML diferentes siendo el target la columna 'fire_type'. Utiliza un pipeline que preprocese los datos con PCA. Usa Gridsearch.
+    # 
+    #   
     # 4. Añade una entrada en la tabla 'student_findings' por cada uno de los tres modelos. 'student_id' es EL-ID-DE-TU-GRUPO.
+
+
     # 5. Obtén la información de la tabla 'fire_nrt_M6_96619' y utiliza el mejor modelo para predecir la columna target de esos datos. 
+
+    
     # 6. Usando SQL (no pandas) añade una columna nueva en la tabla 'fire_nrt_M6_96619' con el nombre 'fire_type_EL-ID-DE-TU-GRUPO'
+
+
     # 7. Muestra por pantalla en Streamlit la tabla completa (X e y)
     pass
 

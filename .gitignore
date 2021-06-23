@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# evitar subir archivos .json (de configuración)
+config/
+
 # C extensions
 *.so
 

@@ -1,13 +1,22 @@
 import streamlit as st
 from PIL import Image
+import os, sys
 
 """ Siempre que veas 'pass' es un TO-DO (por hacer)"""
 
 """1"""
 # Haz que se pueda importar correctamente estas funciones que están en la carpeta utils/
-pass
-from utils.stream_config import draw_map
-from utils.dataframes import load_csv_for_map
+path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # se localiza 
+sys.path.append(path)
+print(os.path.abspath(__file__))
+print (path)
+
+from src.utils.stream_config import draw_map
+from src.utils.dataframes import load_csv_for_map
+
+
+print('OK')
+'''
 menu = st.sidebar.selectbox('Menu:',
             options=["No selected", "Load Image", "Map", "API", "MySQL", "Machine Learning"])
 
@@ -48,5 +57,5 @@ if menu == "Australia Fire":
     # 7. Muestra por pantalla en Streamlit la tabla completa (X e y)
     pass
 
-
+'''
 
